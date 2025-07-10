@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrimeFit - Frank's Fitness Journey</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="nav-container">
+            <div class="nav-header">
+                <h1 class="nav-title">PrimeFit</h1>
+                <div class="nav-subtitle">Men Over 40 Fitness</div>
+            </div>
+            <div class="nav-menu">
+                <button class="nav-item active" data-page="dashboard">Dashboard</button>
+                <button class="nav-item" data-page="analytics">Analytics</button>
+                <button class="nav-item" data-page="workouts">Workouts</button>
+                <button class="nav-item" data-page="nutrition">Nutrition</button>
+                <button class="nav-item" data-page="insights">Insights</button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Page -->
+            <div class="page active" id="dashboard">
+                <div class="page-header">
+                    <h2>Welcome back, Frank!</h2>
+                    <div class="live-indicator">
+                        <span class="live-dot"></span>
+                        Live Data
+                    </div>
+                </div>
+
+                <!-- Hero Section -->
+                <div class="hero-section">
+                    <div class="profile-card">
+                        <div class="profile-info">
+                            <h3>Frank Forty</h3>
+                            <p>Age: 42 | Height: 175cm</p>
+                            <p>Goal: Be active with my child</p>
+                        </div>
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">79.6kg</div>
+                                <div class="stat-label">Current Weight</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">15.4kg</div>
+                                <div class="stat-label">Weight Lost</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">4.6kg</div>
+                                <div class="stat-label">To Goal</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weight Progress Chart -->
+                <div class="chart-container">
+                    <h3>Weight Loss Journey</h3>
+                    <canvas id="weightChart"></canvas>
+                </div>
+
+                <!-- Daily Metrics -->
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <h4>Steps Today</h4>
+                            <div class="metric-value">7,420</div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 93%"></div>
+                        </div>
+                        <div class="metric-goal">Goal: 8,000 steps</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <h4>Calories Burned</h4>
+                            <div class="metric-value">2,350</div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%"></div>
+                        </div>
+                        <div class="metric-goal">Goal: 2,500 calories</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <h4>Sleep Last Night</h4>
+                            <div class="metric-value">7.2h</div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 90%"></div>
+                        </div>
+                        <div class="metric-goal">Goal: 8 hours</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <h4>Heart Rate</h4>
+                            <div class="metric-value live-value">72 bpm</div>
+                        </div>
+                        <div class="heart-rate-zones">
+                            <div class="zone-item">
+                                <span class="zone-color fat-burn"></span>
+                                <span>Fat Burn: 45min</span>
+                            </div>
+                            <div class="zone-item">
+                                <span class="zone-color cardio"></span>
+                                <span>Cardio: 25min</span>
+                            </div>
+                            <div class="zone-item">
+                                <span class="zone-color peak"></span>
+                                <span>Peak: 15min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weekly Progress -->
+                <div class="weekly-progress">
+                    <h3>This Week's Progress</h3>
+                    <div class="progress-items">
+                        <div class="progress-item">
+                            <div class="progress-label">Weight Change</div>
+                            <div class="progress-value success">-0.8kg</div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-label">Avg Steps</div>
+                            <div class="progress-value">7,200</div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-label">Workouts</div>
+                            <div class="progress-value">3/4</div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-label">Sleep Avg</div>
+                            <div class="progress-value">7.2h</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Page -->
+            <div class="page" id="analytics">
+                <div class="page-header">
+                    <h2>Analytics & KPIs</h2>
+                </div>
+
+                <!-- Leading vs Lagging Indicators -->
+                <div class="indicators-section">
+                    <div class="indicator-group">
+                        <h3>Leading Indicators</h3>
+                        <div class="indicator-cards">
+                            <div class="indicator-card">
+                                <h4>Daily Step Goal</h4>
+                                <div class="indicator-value">75%</div>
+                                <div class="indicator-bar">
+                                    <div class="indicator-fill" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div class="indicator-card">
+                                <h4>Workout Frequency</h4>
+                                <div class="indicator-value">3.2/week</div>
+                                <div class="indicator-bar">
+                                    <div class="indicator-fill" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="indicator-card">
+                                <h4>Sleep Quality</h4>
+                                <div class="indicator-value">7.8/10</div>
+                                <div class="indicator-bar">
+                                    <div class="indicator-fill" style="width: 78%"></div>
+                                </div>
+                            </div>
+                            <div class="indicator-card">
+                                <h4>Nutrition Adherence</h4>
+                                <div class="indicator-value">82%</div>
+                                <div class="indicator-bar">
+                                    <div class="indicator-fill" style="width: 82%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="indicator-group">
+                        <h3>Lagging Indicators</h3>
+                        <div class="indicator-cards">
+                            <div class="indicator-card">
+                                <h4>Total Weight Lost</h4>
+                                <div class="indicator-value">15.4kg</div>
+                                <div class="status status--success">On Track</div>
+                            </div>
+                            <div class="indicator-card">
+                                <h4>Body Fat %</h4>
+                                <div class="indicator-value">22.5%</div>
+                                <div class="status status--warning">Improving</div>
+                            </div>
+                            <div class="indicator-card">
+                                <h4>VO2 Max</h4>
+                                <div class="indicator-value">38.5</div>
+                                <div class="status status--success">Good</div>
+                            </div>
+                            <div class="indicator-card">
+                                <h4>Wellness Score</h4>
+                                <div class="indicator-value">7.4/10</div>
+                                <div class="status status--success">Excellent</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPI Scorecard -->
+                <div class="kpi-scorecard">
+                    <h3>Overall Performance Radar</h3>
+                    <canvas id="kpiChart"></canvas>
+                </div>
+
+                <!-- Predictive Analytics -->
+                <div class="predictive-section">
+                    <h3>Predictive Analytics</h3>
+                    <div class="prediction-cards">
+                        <div class="prediction-card">
+                            <h4>Target Achievement</h4>
+                            <div class="prediction-value">Sep 15, 2025</div>
+                            <div class="prediction-detail">78% probability</div>
+                        </div>
+                        <div class="prediction-card">
+                            <h4>Injury Risk</h4>
+                            <div class="prediction-value">15%</div>
+                            <div class="prediction-detail status--success">Low Risk</div>
+                        </div>
+                        <div class="prediction-card">
+                            <h4>Plateau Risk</h4>
+                            <div class="prediction-value">25%</div>
+                            <div class="prediction-detail status--warning">Monitor</div>
+                        </div>
+                        <div class="prediction-card">
+                            <h4>Next Month Weight</h4>
+                            <div class="prediction-value">77.1kg</div>
+                            <div class="prediction-detail">Predicted</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workouts Page -->
+            <div class="page" id="workouts">
+                <div class="page-header">
+                    <h2>Workout Tracking</h2>
+                </div>
+
+                <!-- Recent Workouts -->
+                <div class="workouts-section">
+                    <h3>Recent Sessions</h3>
+                    <div class="workout-list">
+                        <div class="workout-item">
+                            <div class="workout-type">Running</div>
+                            <div class="workout-details">
+                                <span>Jan 8 • 35 min • Moderate</span>
+                                <span>420 calories</span>
+                            </div>
+                            <div class="workout-rating">
+                                <span class="rating-stars">★★★★☆</span>
+                                <span>8/10</span>
+                            </div>
+                        </div>
+                        <div class="workout-item">
+                            <div class="workout-type">Strength Training</div>
+                            <div class="workout-details">
+                                <span>Jan 7 • 45 min • High</span>
+                                <span>380 calories</span>
+                            </div>
+                            <div class="workout-rating">
+                                <span class="rating-stars">★★★★★</span>
+                                <span>9/10</span>
+                            </div>
+                        </div>
+                        <div class="workout-item">
+                            <div class="workout-type">Cycling</div>
+                            <div class="workout-details">
+                                <span>Jan 5 • 60 min • Moderate</span>
+                                <span>540 calories</span>
+                            </div>
+                            <div class="workout-rating">
+                                <span class="rating-stars">★★★★☆</span>
+                                <span>8/10</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workout Analytics -->
+                <div class="workout-analytics">
+                    <div class="workout-chart-container">
+                        <h3>Workout Distribution</h3>
+                        <canvas id="workoutChart"></canvas>
+                    </div>
+                    <div class="workout-stats">
+                        <h3>Workout Stats</h3>
+                        <div class="stat-grid">
+                            <div class="stat-item">
+                                <div class="stat-value">60</div>
+                                <div class="stat-label">Total Workouts</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">3.2</div>
+                                <div class="stat-label">Weekly Avg</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">42</div>
+                                <div class="stat-label">Avg Duration</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">425</div>
+                                <div class="stat-label">Avg Calories</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nutrition Page -->
+            <div class="page" id="nutrition">
+                <div class="page-header">
+                    <h2>Nutrition Tracking</h2>
+                </div>
+
+                <!-- Calorie Balance -->
+                <div class="calorie-balance">
+                    <h3>Today's Calorie Balance</h3>
+                    <div class="balance-display">
+                        <div class="balance-item">
+                            <div class="balance-label">Consumed</div>
+                            <div class="balance-value">2,100</div>
+                        </div>
+                        <div class="balance-separator">-</div>
+                        <div class="balance-item">
+                            <div class="balance-label">Burned</div>
+                            <div class="balance-value">2,350</div>
+                        </div>
+                        <div class="balance-separator">=</div>
+                        <div class="balance-item">
+                            <div class="balance-label">Net</div>
+                            <div class="balance-value success">-250</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Macronutrients -->
+                <div class="macro-section">
+                    <h3>Macronutrient Breakdown</h3>
+                    <div class="macro-chart-container">
+                        <canvas id="macroChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Hydration -->
+                <div class="hydration-section">
+                    <h3>Hydration Tracking</h3>
+                    <div class="hydration-display">
+                        <div class="water-glasses">
+                            <div class="glass filled"></div>
+                            <div class="glass filled"></div>
+                            <div class="glass filled"></div>
+                            <div class="glass filled"></div>
+                            <div class="glass filled"></div>
+                            <div class="glass filled"></div>
+                            <div class="glass half"></div>
+                            <div class="glass empty"></div>
+                        </div>
+                        <div class="hydration-stats">
+                            <div class="hydration-value">2.8L</div>
+                            <div class="hydration-goal">Goal: 3.5L</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nutrition Goals -->
+                <div class="nutrition-goals">
+                    <h3>Nutrition Goals Progress</h3>
+                    <div class="goals-grid">
+                        <div class="goal-item">
+                            <div class="goal-label">Protein</div>
+                            <div class="goal-progress">
+                                <div class="goal-bar">
+                                    <div class="goal-fill" style="width: 83%"></div>
+                                </div>
+                                <div class="goal-text">125g / 150g</div>
+                            </div>
+                        </div>
+                        <div class="goal-item">
+                            <div class="goal-label">Carbs</div>
+                            <div class="goal-progress">
+                                <div class="goal-bar">
+                                    <div class="goal-fill" style="width: 88%"></div>
+                                </div>
+                                <div class="goal-text">220g / 250g</div>
+                            </div>
+                        </div>
+                        <div class="goal-item">
+                            <div class="goal-label">Fat</div>
+                            <div class="goal-progress">
+                                <div class="goal-bar">
+                                    <div class="goal-fill" style="width: 85%"></div>
+                                </div>
+                                <div class="goal-text">85g / 100g</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Insights Page -->
+            <div class="page" id="insights">
+                <div class="page-header">
+                    <h2>AI-Powered Insights</h2>
+                </div>
+
+                <!-- AI Recommendations -->
+                <div class="recommendations-section">
+                    <h3>Today's Recommendations</h3>
+                    <div class="recommendation-cards">
+                        <div class="recommendation-card priority-high">
+                            <div class="rec-header">
+                                <div class="rec-icon">🏃</div>
+                                <div class="rec-priority">High Priority</div>
+                            </div>
+                            <div class="rec-title">Increase Daily Steps</div>
+                            <div class="rec-description">You're 580 steps short of your goal. A 15-minute walk will get you there!</div>
+                        </div>
+                        <div class="recommendation-card priority-medium">
+                            <div class="rec-header">
+                                <div class="rec-icon">💪</div>
+                                <div class="rec-priority">Medium Priority</div>
+                            </div>
+                            <div class="rec-title">Schedule Strength Training</div>
+                            <div class="rec-description">It's been 2 days since your last strength session. Consider a 30-minute session tomorrow.</div>
+                        </div>
+                        <div class="recommendation-card priority-low">
+                            <div class="rec-header">
+                                <div class="rec-icon">💧</div>
+                                <div class="rec-priority">Low Priority</div>
+                            </div>
+                            <div class="rec-title">Hydration Reminder</div>
+                            <div class="rec-description">Great job on hydration! Try to drink 2 more glasses to reach your optimal level.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risk Assessment -->
+                <div class="risk-assessment">
+                    <h3>Risk Assessment</h3>
+                    <div class="risk-cards">
+                        <div class="risk-card low-risk">
+                            <div class="risk-title">Injury Risk</div>
+                            <div class="risk-value">15%</div>
+                            <div class="risk-status">Low Risk</div>
+                            <div class="risk-description">Your workout intensity and recovery balance is good.</div>
+                        </div>
+                        <div class="risk-card medium-risk">
+                            <div class="risk-title">Plateau Risk</div>
+                            <div class="risk-value">25%</div>
+                            <div class="risk-status">Monitor</div>
+                            <div class="risk-description">Consider varying your workout routine to prevent adaptation.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success Probability -->
+                <div class="success-section">
+                    <h3>Success Probability</h3>
+                    <div class="success-display">
+                        <div class="success-gauge">
+                            <div class="gauge-container">
+                                <div class="gauge-fill" style="transform: rotate(140deg)"></div>
+                                <div class="gauge-center">
+                                    <div class="gauge-value">78%</div>
+                                    <div class="gauge-label">Success Rate</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="success-factors">
+                            <div class="factor-item">
+                                <span class="factor-label">Consistency</span>
+                                <span class="factor-value">85%</span>
+                            </div>
+                            <div class="factor-item">
+                                <span class="factor-label">Motivation</span>
+                                <span class="factor-value">85%</span>
+                            </div>
+                            <div class="factor-item">
+                                <span class="factor-label">Progress Rate</span>
+                                <span class="factor-value">72%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coaching Tips -->
+                <div class="coaching-section">
+                    <h3>Personalized Coaching Tips</h3>
+                    <div class="tips-list">
+                        <div class="tip-item">
+                            <div class="tip-icon">⚡</div>
+                            <div class="tip-content">
+                                <div class="tip-title">Energy Management</div>
+                                <div class="tip-text">Your afternoon energy dips suggest scheduling workouts in the morning for better performance.</div>
+                            </div>
+                        </div>
+                        <div class="tip-item">
+                            <div class="tip-icon">🎯</div>
+                            <div class="tip-content">
+                                <div class="tip-title">Goal Adjustment</div>
+                                <div class="tip-text">You're ahead of schedule! Consider increasing your weekly workout frequency from 3 to 4 sessions.</div>
+                            </div>
+                        </div>
+                        <div class="tip-item">
+                            <div class="tip-icon">🏆</div>
+                            <div class="tip-content">
+                                <div class="tip-title">Motivation Boost</div>
+                                <div class="tip-text">Plan active activities with your child this weekend to maintain motivation and create positive associations.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
